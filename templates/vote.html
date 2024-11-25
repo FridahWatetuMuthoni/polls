@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="parts title">Cast Your Vote</h1>
+
+<form class="results-section" method="POST">
+ {% csrf_token %}
+  <h4 class="question-text title2">
+    {{question.question_text}}
+  </h4>
+
+    <section class="choices">
+    {% for choice in question.choices.all %}
+    <section class="choice">
+        <input type="radio" name="polls" id="polls" class="polls" value={{choice.id}} >
+        <p>{{choice.choice_text}}</p>
+    </section>
+        
+    {% endfor %}
+    </section>
+    <button type="submit" class="vote-btn">Vote</button>
+
+</form>
+{% endblock content %}

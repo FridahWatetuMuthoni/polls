@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="parts title">Available Polls</h1>
+{% if questions %}
+
+  {% for question in questions %}
+  <section class="parts">
+
+  <h4 >
+    {{forloop.counter}}. {{question.question_text}}
+  </h4>
+  <section class="btns">
+    <a class="btn vote" href="{% url 'vote' question.id %}">Vote</a>
+    <a class="btn results" href="{% url 'results' question.id %}">View Results</a>
+  </section>
+</section>
+
+  {% endfor %}
+{% else %}
+<h1>No questions yet</h1>
+{% endif %} {% endblock %}

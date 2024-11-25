@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="parts title">Poll Result</h1>
+
+  <section class="results-section">
+
+  <h4 class="question-text title2">
+    {{question.question_text}}
+  </h4>
+    <section class="choices">
+    {% for choice in question.choices.all %}
+    <section class="choice">
+        <p>{{choice.choice_text}}</p>-
+        <p>{{choice.votes}}</p>
+    </section>
+        
+    {% endfor %}
+    </section>
+
+</section>
+
+{% endblock content %}

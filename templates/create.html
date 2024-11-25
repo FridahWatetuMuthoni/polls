@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="title-poll title">Create a New Poll</h1>
+
+<form class="results-section create_form" method="POST">
+    {% csrf_token %}
+    {{question_form.as_p}}
+    <section class="choice_form">
+    {{choice_form.management_form}}
+    <h3 class="choices-title">Choices:</h3>        
+    {% for form in choice_form %}
+        {{ form.as_p }}
+    {% endfor %}
+    </section>
+    <button type="submit" class="vote-btn">Create Poll</button>
+    </section>
+
+</form>
+{% endblock content %}
